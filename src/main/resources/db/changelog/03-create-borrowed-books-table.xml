@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="03" author="khalid">
+        <createTable tableName="borrowed_books" remarks="A table to contain all borrowed books information">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="borrowed_at" type="date" defaultValueComputed="CURRENT_DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="due_date" type="date" defaultValueComputed="DATE_ADD(CURRENT_DATE, INTERVAL 30 DAY)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="return_date" type="date">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="borrowed_books"
+                                 baseColumnNames="user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 constraintName="fk_borrowed_user_id"/>
+
+        <addForeignKeyConstraint baseTableName="borrowed_books"
+                                 baseColumnNames="book_id"
+                                 referencedTableName="books"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 constraintName="fk_borrowed_book_id"/>
+    </changeSet>
+</databaseChangeLog>
+
+        <!--
+        CREATE TABLE borrowed_books (
+            borrow_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            user_id BIGINT NOT NULL,                       Foreign key to users table
+            book_id BIGINT NOT NULL,                        Foreign key to books table
+            borrowed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, - When the book was borrowed
+            due_date DATE NOT NULL,                        - Date when the book is due
+            return_date DATE,                             - Date when the book was returned (nullable)
+            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,   = If user is deleted, also delete their borrow records
+            FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE   = If book is deleted, also delete borrow records
+        );
+        -->

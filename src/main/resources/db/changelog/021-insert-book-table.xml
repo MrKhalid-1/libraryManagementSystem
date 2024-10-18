@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="06" author="khalid">
+        <insert tableName="books">
+            <column name="title" value="To Kill a Mockingbird"></column>
+            <column name="author" value="Harper Lee"></column>
+            <column name="isbn" value="9780060935467"></column>
+            <column name="published_date" value="1960-07-11"></column>
+            <column name="available_quantity" value="10"></column>
+            <column name="total_quantity" value="15"></column>
+        </insert>
+        <insert tableName="books">
+            <column name="title" value="1984"></column>
+            <column name="author" value="George Orwell"></column>
+            <column name="isbn" value="9780451524935"></column>
+            <column name="published_date" value="1949-06-08"></column>
+            <column name="available_quantity" value="3"></column>
+            <column name="total_quantity" value="5"></column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
+
+<!--Title: To Kill a Mockingbird
+Author: Harper Lee
+ISBN: 9780060935467
+Published Date: 1960-07-11
+
+Title: 1984
+Author: George Orwell
+ISBN: 9780451524935
+Published Date: 1949-06-08
+
+Title: The Great Gatsby
+Author: F. Scott Fitzgerald
+ISBN: 9780743273565
+Published Date: 1925-04-10
+
+Title: Pride and Prejudice
+Author: Jane Austen
+ISBN: 9781503290563
+Published Date: 1813-01-28
+
+Title: The Catcher in the Rye
+Author: J.D. Salinger
+ISBN: 9780316769488
+Published Date: 1951-07-16-->
