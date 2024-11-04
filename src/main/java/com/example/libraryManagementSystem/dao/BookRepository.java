@@ -1,4 +1,7 @@
 package com.example.libraryManagementSystem.dao;
 
-public interface BookRepository {
+import com.example.libraryManagementSystem.entity.TBook;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BookRepository extends JpaRepository<TBook, Integer> {
 }

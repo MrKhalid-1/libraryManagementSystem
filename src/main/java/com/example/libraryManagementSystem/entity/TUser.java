@@ -1,12 +1,12 @@
-package com.example.libraryManagementSystem.Tentity;
+package com.example.libraryManagementSystem.entity;
 
 import jakarta.persistence.*;
-
+import com.example.libraryManagementSystem.common.AppContants;
 import java.util.Date;
 
 @Entity
 @Table(name = "users")
-public class Tuser {
+public class TUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,7 +27,8 @@ public class Tuser {
     private String mobile;
 
     @Column(name = "role")
-    private Enum role;
+    @Enumerated(EnumType.STRING)
+    private AppContants.UserRoles userRole;
 
     @Column(name = "created_at")
     private String createdTime;
@@ -83,12 +84,12 @@ public class Tuser {
         this.mobile = mobile;
     }
 
-    public Enum getRole() {
-        return role;
+    public AppContants.UserRoles getUserRole() {
+        return userRole;
     }
 
-    public void setRole(Enum role) {
-        this.role = role;
+    public void setUserRole(AppContants.UserRoles userRole) {
+        this.userRole = userRole;
     }
 
     public String getCreatedTime() {
@@ -109,14 +110,14 @@ public class Tuser {
 
     @Override
     public String toString() {
-        return "Tuser{" +
+        return "TUser{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
-                ", role=" + role +
+                ", userRole=" + userRole +
                 ", createdTime='" + createdTime + '\'' +
                 ", updatedTime=" + updatedTime +
                 '}';
