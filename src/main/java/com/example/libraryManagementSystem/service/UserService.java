@@ -4,6 +4,7 @@ import com.example.libraryManagementSystem.dao.UserRepository;
 import com.example.libraryManagementSystem.entity.TUser;
 import com.example.libraryManagementSystem.model.VUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,6 +18,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public VUser createUser(VUser vUser) {
         TUser tUser = convertToEntity(vUser);
@@ -68,7 +72,7 @@ public class UserService {
         tUser.setId(vUser.getId());
         tUser.setName(vUser.getName());
         tUser.setUserName(vUser.getUserName());
-        tUser.setPassword(vUser.getPassword());
+        tUser.setPassword(passwordEncoder.encode(vUser.getPassword()));
         tUser.setEmail(vUser.getEmail());
         tUser.setMobile(vUser.getMobile());
         tUser.setUserRole(vUser.getUserRole());
@@ -84,7 +88,7 @@ public class UserService {
         vUser.setId(tUser.getId());
         vUser.setName(tUser.getName());
         vUser.setUserName(tUser.getUserName());
-        vUser.setPassword(tUser.getPassword());
+//        vUser.setPassword(tUser.getPassword());
         vUser.setEmail(tUser.getEmail());
         vUser.setMobile(tUser.getMobile());
         vUser.setUserRole(tUser.getUserRole());

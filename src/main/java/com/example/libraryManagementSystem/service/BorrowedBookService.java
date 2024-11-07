@@ -82,7 +82,6 @@ public class BorrowedBookService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         tBorrowedBooks.setBorrowedAt(LocalDate.parse(LocalDate.now().format(formatter)));
         tBorrowedBooks.setDueDate(LocalDate.parse(vBorrowedBooks.getDueDate().format(formatter)));
-//        tBorrowedBooks.setDueAmount(vBorrowedBooks.getDueAmount());
         tBorrowedBooks.setReturnDate(LocalDate.parse(vBorrowedBooks.getReturnDate().format(formatter)));
         return tBorrowedBooks;
     }

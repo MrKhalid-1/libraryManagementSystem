@@ -1,13 +1,11 @@
 package com.example.libraryManagementSystem.mgr;
 
-import com.example.libraryManagementSystem.entity.TUser;
 import com.example.libraryManagementSystem.model.VUser;
 import com.example.libraryManagementSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class UserManager {
@@ -31,6 +29,6 @@ public class UserManager {
     }
 
     public List<VUser> getAllUser() {
-        return userService. getAllUser();
+        return userService.getAllUser();
     }
 }

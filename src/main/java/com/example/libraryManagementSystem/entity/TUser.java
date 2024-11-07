@@ -19,7 +19,7 @@ public class TUser {
     @Column(name = "username", unique = true, nullable = false , length = 30)
     private String userName;
 
-    @Column(name = "password",nullable = false , length = 8)
+    @Column(name = "password",nullable = false)
     private String password;
 
     @Column(name = "email", unique = true, nullable = false , length = 30)

@@ -3,6 +3,8 @@ package com.example.libraryManagementSystem.controller;
 import com.example.libraryManagementSystem.mgr.BorrowedBookManager;
 import com.example.libraryManagementSystem.model.VBook;
 import com.example.libraryManagementSystem.model.VBorrowedBooks;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +21,32 @@ public class BorrowedBookController {
     @Autowired
     private BorrowedBookManager borrowedBookManager;
 
+    @Tag(name = "Borrow")
+    @Operation(summary = "borrowed book")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> borrowBook(@RequestParam Integer userId, @RequestParam Integer bookId) {
         LOG.debug("==> borrowedBook()");
         return ResponseEntity.ok(borrowedBookManager.borrowBook(userId, bookId));
     }
 
+    @Tag(name = "Borrow")
+    @Operation(summary = "Return book")
     @RequestMapping(method = RequestMethod.POST, path = "/returnBook")
     public ResponseEntity<?> returnBook(@RequestParam Integer userId, @RequestParam Integer bookId) {
         LOG.debug("==> returnBook()");
         return ResponseEntity.ok(borrowedBookManager.returnBook(userId, bookId));
     }
 
+    @Tag(name = "Borrow")
+    @Operation(summary = "Borrowed books by user")
     @RequestMapping(method = RequestMethod.GET, path = "/books")
     public ResponseEntity<List<VBorrowedBooks>> getBorrowedBooksByUser(@RequestParam Integer userId) {
         LOG.debug("==> BorrowedBooksByUser()");
         return ResponseEntity.ok(borrowedBookManager.getBorrowedBooksByUser(userId));
     }
 
+    @Tag(name = "Borrow")
+    @Operation(summary = "Borrowed book by user")
     @RequestMapping(method = RequestMethod.GET, path = "/book")
     public ResponseEntity<VBorrowedBooks> getBorrowedBookByUser(@RequestParam Integer userId , @RequestParam Integer bookId) {
         LOG.debug("==> BorrowedBooksByUser()");

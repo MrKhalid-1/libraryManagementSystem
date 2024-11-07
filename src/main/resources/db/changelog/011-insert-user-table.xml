@@ -6,8 +6,9 @@
     <changeSet id="05" author="khalid">
         <insert tableName="users">
             <column name="name" value="Mr Shon"></column>
-            <column name="username" value="shon"></column>
-            <column name="password" value="shon"></column>
+            <column name="username" value="Shon"></column>
+<!--            <column name="password" value="shon"></column>-->
+            <column name="password" value="$2b$12$aHD6W48hf.r2pi9NFS.Z1OgnZuzAhlV26gupBz8xifEjtjddsVMsm"></column>
             <column name="email" value="shon@gmail.com"></column>
             <column name="mobile" value="09887854745"></column>
         </insert>

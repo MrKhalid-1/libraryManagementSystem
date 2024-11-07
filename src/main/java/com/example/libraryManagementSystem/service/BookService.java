@@ -2,7 +2,6 @@ package com.example.libraryManagementSystem.service;
 
 import com.example.libraryManagementSystem.dao.BookRepository;
 import com.example.libraryManagementSystem.entity.TBook;
-import com.example.libraryManagementSystem.entity.TUser;
 import com.example.libraryManagementSystem.model.VBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

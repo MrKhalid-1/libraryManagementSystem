@@ -2,6 +2,8 @@ package com.example.libraryManagementSystem.controller;
 
 import com.example.libraryManagementSystem.mgr.UserManager;
 import com.example.libraryManagementSystem.model.VUser;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,9 @@ public class UserController {
     @Autowired
     private UserManager userManager;
 
-    @RequestMapping(method = RequestMethod.GET , path ="/home")
+    @Tag(name = "Home")
+    @Operation(summary = "Home")
+    @RequestMapping(method = RequestMethod.GET, path = "/home")
     public HashMap<Object, String> home() {
         HashMap<Object, String> hashMap = new HashMap<>();
         LOG.debug("==> Home()");
@@ -27,36 +31,44 @@ public class UserController {
         return hashMap;
     }
 
-    //    @Tag(name = "User")
-//    @Operation(summary = "Add new company")
+    @Tag(name = "User")
+    @Operation(summary = "Add new user")
+//    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<VUser> addUser(@RequestBody VUser vUser) {
         LOG.debug("==> addUser()");
         return ResponseEntity.ok(userManager.createUser(vUser));
     }
 
+    @Tag(name = "User")
+    @Operation(summary = "Update user")
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<VUser> updateUser(@RequestBody VUser vUser) {
         LOG.debug("==>  updateUser()");
         return ResponseEntity.ok(userManager.updateUser(vUser));
     }
 
-
-    @RequestMapping(method = RequestMethod.DELETE , path = "/{userId}")
+    @Tag(name = "User")
+    @Operation(summary = "Delete user")
+    @RequestMapping(method = RequestMethod.DELETE, path = "/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable Integer userId) {
         LOG.debug("==> deleteUser()");
         return ResponseEntity.ok(userManager.deleteUser(userId));
     }
 
-    @RequestMapping(method = RequestMethod.GET , path = "/{userId}")
+    @Tag(name = "User")
+    @Operation(summary = "User by Id")
+    @RequestMapping(method = RequestMethod.GET, path = "/{userId}")
     public ResponseEntity<VUser> getUserById(@PathVariable Integer userId) {
         LOG.debug("==> addUser()");
         return ResponseEntity.ok(userManager.getUserById(userId));
     }
 
+    @Tag(name = "User")
+    @Operation(summary = "All User")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<VUser>> getAllUser() {
         LOG.debug("==> allUser()");
-        return ResponseEntity.ok(userManager. getAllUser());
+        return ResponseEntity.ok(userManager.getAllUser());
     }
 }

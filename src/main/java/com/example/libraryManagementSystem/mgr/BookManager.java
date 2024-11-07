@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 public class BookManager {
-    
+
     @Autowired
     private BookService bookService;
 
