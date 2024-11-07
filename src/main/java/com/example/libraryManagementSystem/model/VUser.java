@@ -18,8 +18,8 @@ public class VUser {
     private String mobile;
     @Enumerated(EnumType.STRING)
     private AppContants.UserRoles userRole;
-    private String createdTime;
-    private Date updatedTime;
+    private String createdDate;
+    private Date updatedDate;
 
     public Integer getId() {
         return id;
@@ -77,20 +77,20 @@ public class VUser {
         this.userRole = userRole;
     }
 
-    public String getCreatedTime() {
-        return createdTime;
+    public String getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getUpdatedTime() {
-        return updatedTime;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
@@ -103,8 +103,8 @@ public class VUser {
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", userRole=" + userRole +
-                ", createdTime='" + createdTime + '\'' +
-                ", updatedTime=" + updatedTime +
+                ", createdDate='" + createdDate + '\'' +
+                ", updatedDate=" + updatedDate +
                 '}';
     }
 }

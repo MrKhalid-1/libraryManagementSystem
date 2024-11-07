@@ -41,16 +41,3 @@
                                  constraintName="fk_borrowed_book_id"/>
     </changeSet>
 </databaseChangeLog>
-
-        <!--
-        CREATE TABLE borrowed_books (
-            borrow_id BIGINT AUTO_INCREMENT PRIMARY KEY,
-            user_id BIGINT NOT NULL,                       Foreign key to users table
-            book_id BIGINT NOT NULL,                        Foreign key to books table
-            borrowed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, - When the book was borrowed
-            due_date DATE NOT NULL,                        - Date when the book is due
-            return_date DATE,                             - Date when the book was returned (nullable)
-            FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,   = If user is deleted, also delete their borrow records
-            FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE   = If book is deleted, also delete borrow records
-        );
-        -->

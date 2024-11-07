@@ -2,6 +2,8 @@ package com.example.libraryManagementSystem.entity;
 
 import jakarta.persistence.*;
 import com.example.libraryManagementSystem.common.AppContants;
+import org.springframework.boot.autoconfigure.mail.MailProperties;
+
 import java.util.Date;
 
 @Entity
@@ -14,27 +16,27 @@ public class TUser {
     @Column(name = "name" , nullable = false , length = 30)
     private String name;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true, nullable = false , length = 30)
     private String userName;
 
-    @Column(name = "password")
+    @Column(name = "password",nullable = false , length = 8)
     private String password;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false , length = 30)
     private String email;
 
-    @Column(name = "mobile")
+    @Column(name = "mobile", unique = true, nullable = false , length = 30)
     private String mobile;
 
-    @Column(name = "role")
+    @Column(name = "role",nullable = false)
     @Enumerated(EnumType.STRING)
     private AppContants.UserRoles userRole;
 
     @Column(name = "created_at")
-    private String createdTime;
+    private String createdDate;
 
     @Column(name = "updated_at")
-    private Date updatedTime;
+    private Date updatedDate;
 
     public Integer getId() {
         return id;
@@ -92,20 +94,20 @@ public class TUser {
         this.userRole = userRole;
     }
 
-    public String getCreatedTime() {
-        return createdTime;
+    public String getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getUpdatedTime() {
-        return updatedTime;
+    public Date getUpdatedDate() {
+        return updatedDate;
     }
 
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
@@ -118,8 +120,8 @@ public class TUser {
                 ", email='" + email + '\'' +
                 ", mobile='" + mobile + '\'' +
                 ", userRole=" + userRole +
-                ", createdTime='" + createdTime + '\'' +
-                ", updatedTime=" + updatedTime +
+                ", createdDate='" + createdDate + '\'' +
+                ", updatedDate=" + updatedDate +
                 '}';
     }
 }

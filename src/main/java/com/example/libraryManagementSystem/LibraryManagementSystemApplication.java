@@ -10,5 +10,4 @@ public class LibraryManagementSystemApplication {
 		SpringApplication.run(LibraryManagementSystemApplication.class, args);
 		System.out.println("Server Started !!");
 	}
-
 }

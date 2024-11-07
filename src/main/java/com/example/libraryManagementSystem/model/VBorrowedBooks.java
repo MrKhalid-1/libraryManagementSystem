@@ -3,16 +3,17 @@ package com.example.libraryManagementSystem.model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class VBorrowedBooks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer userId;
     private Integer bookId;
-    private Date borrowedAt;
-    private Date dueDate;
-    private String returnDate;
+    private LocalDate borrowedAt;
+    private LocalDate dueDate;
+    private Integer dueAmount;
+    private LocalDate returnDate;
 
     public Integer getId() {
         return id;
@@ -38,27 +39,35 @@ public class VBorrowedBooks {
         this.bookId = bookId;
     }
 
-    public Date getBorrowedAt() {
+    public LocalDate getBorrowedAt() {
         return borrowedAt;
     }
 
-    public void setBorrowedAt(Date borrowedAt) {
+    public void setBorrowedAt(LocalDate borrowedAt) {
         this.borrowedAt = borrowedAt;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public String getReturnDate() {
+    public Integer getDueAmount() {
+        return dueAmount;
+    }
+
+    public void setDueAmount(Integer dueAmount) {
+        this.dueAmount = dueAmount;
+    }
+
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -70,6 +79,7 @@ public class VBorrowedBooks {
                 ", bookId=" + bookId +
                 ", borrowedAt=" + borrowedAt +
                 ", dueDate=" + dueDate +
+                ", dueAmount=" + dueAmount +
                 ", returnDate='" + returnDate + '\'' +
                 '}';
     }

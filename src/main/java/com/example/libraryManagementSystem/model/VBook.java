@@ -3,7 +3,8 @@ package com.example.libraryManagementSystem.model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class VBook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,11 +12,11 @@ public class VBook {
     private String title;
     private String author;
     private String isbn;
-    private Date publishedDate;
+    private LocalDate publishedDate;
     private Integer totalQuantity;
     private Integer availableQuantity;
-    private String createdTime;
-    private Date updatedTime;
+    private LocalDate createdDate;
+    private LocalDate updatedDate;
 
     public Integer getId() {
         return id;
@@ -49,13 +50,6 @@ public class VBook {
         this.isbn = isbn;
     }
 
-    public Date getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
-    }
 
     public Integer getTotalQuantity() {
         return totalQuantity;
@@ -73,20 +67,28 @@ public class VBook {
         this.availableQuantity = availableQuantity;
     }
 
-    public String getCreatedTime() {
-        return createdTime;
+    public LocalDate getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+    public void setPublishedDate(LocalDate publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
-    public Date getUpdatedTime() {
-        return updatedTime;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDate getUpdatedDate(DateTimeFormatter formatter) {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDate updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
@@ -99,8 +101,8 @@ public class VBook {
                 ", publishedDate=" + publishedDate +
                 ", totalQuantity=" + totalQuantity +
                 ", availableQuantity=" + availableQuantity +
-                ", createdTime='" + createdTime + '\'' +
-                ", updatedTime=" + updatedTime +
+                ", createdDate='" + createdDate + '\'' +
+                ", updatedDate=" + updatedDate +
                 '}';
     }
 }

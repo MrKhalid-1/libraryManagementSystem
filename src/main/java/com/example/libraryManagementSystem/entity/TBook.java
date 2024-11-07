@@ -2,6 +2,7 @@ package com.example.libraryManagementSystem.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,17 +13,17 @@ public class TBook {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "title", nullable = false, length = 30)
+    @Column(name = "title",unique = true, nullable = false)
     private String title;
 
-    @Column(name = "author")
+    @Column(name = "author", nullable = false)
     private String author;
 
-    @Column(name = "isbn")
+    @Column(name = "isbn", unique = true, nullable = false , length = 15)
     private String isbn;
 
     @Column(name = "published_date")
-    private Date publishedDate;
+    private LocalDate publishedDate;
 
     @Column(name = "total_quantity")
     private Integer totalQuantity;
@@ -31,10 +32,10 @@ public class TBook {
     private Integer availableQuantity;
 
     @Column(name = "created_at")
-    private String createdTime;
+    private LocalDate createdDate;
 
     @Column(name = "updated_at")
-    private Date updatedTime;
+    private LocalDate updatedDate;
 
     public Integer getId() {
         return id;
@@ -68,13 +69,6 @@ public class TBook {
         this.isbn = isbn;
     }
 
-    public Date getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
-    }
 
     public Integer getTotalQuantity() {
         return totalQuantity;
@@ -92,20 +86,28 @@ public class TBook {
         this.availableQuantity = availableQuantity;
     }
 
-    public String getCreatedTime() {
-        return createdTime;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedTime(String createdTime) {
-        this.createdTime = createdTime;
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public Date getUpdatedTime() {
-        return updatedTime;
+    public LocalDate getPublishedDate() {
+        return publishedDate;
     }
 
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setPublishedDate(LocalDate publishedDate) {
+        this.publishedDate = publishedDate;
+    }
+
+    public LocalDate getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDate updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
     @Override
@@ -118,8 +120,8 @@ public class TBook {
                 ", publishedDate=" + publishedDate +
                 ", totalQuantity=" + totalQuantity +
                 ", availableQuantity=" + availableQuantity +
-                ", createdTime='" + createdTime + '\'' +
-                ", updatedTime=" + updatedTime +
+                ", createdDate='" + createdDate + '\'' +
+                ", updatedDate=" + updatedDate +
                 '}';
     }
 }

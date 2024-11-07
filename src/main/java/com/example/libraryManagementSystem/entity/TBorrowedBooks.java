@@ -2,7 +2,7 @@ package com.example.libraryManagementSystem.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "borrowed_books")
@@ -19,13 +19,16 @@ public class TBorrowedBooks {
     private Integer bookId;
 
     @Column(name = "borrowed_at")
-    private Date borrowedAt;
+    private LocalDate borrowedAt;
 
     @Column(name = "due_date")
-    private Date dueDate;
+    private LocalDate dueDate;
+
+//    @Column(name = "due_amount")
+//    private Integer dueAmount;
 
     @Column(name = "return_date")
-    private String returnDate;
+    private LocalDate returnDate;
 
     public Integer getId() {
         return id;
@@ -51,27 +54,36 @@ public class TBorrowedBooks {
         this.bookId = bookId;
     }
 
-    public Date getBorrowedAt() {
+    public LocalDate getBorrowedAt() {
         return borrowedAt;
     }
 
-    public void setBorrowedAt(Date borrowedAt) {
+    public void setBorrowedAt(LocalDate borrowedAt) {
         this.borrowedAt = borrowedAt;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public String getReturnDate() {
+//    public Integer getDueAmount() {
+//        return dueAmount;
+//    }
+//
+//    public void setDueAmount(Integer dueAmount) {
+//        this.dueAmount = dueAmount;
+//    }
+
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -83,6 +95,7 @@ public class TBorrowedBooks {
                 ", bookId=" + bookId +
                 ", borrowedAt=" + borrowedAt +
                 ", dueDate=" + dueDate +
+//                ", dueAmount=" + dueAmount +
                 ", returnDate='" + returnDate + '\'' +
                 '}';
     }

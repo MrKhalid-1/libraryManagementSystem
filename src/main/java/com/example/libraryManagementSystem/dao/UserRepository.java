@@ -1,4 +1,7 @@
 package com.example.libraryManagementSystem.dao;
 
-public interface UserRepository {
+import com.example.libraryManagementSystem.entity.TUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<TUser, Integer> {
 }
